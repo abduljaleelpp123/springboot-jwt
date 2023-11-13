@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "538fed60-36c2-4a21-90ba-c8368251ec1f",
+		"name": "lendo-ksa-abdul",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22788423"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"dana\",\r\n    \"email\": \"dana@gmail.com\",\r\n    \"gender\":\"male\",\r\n    \"status\":\"active\",\r\n    \"role\": [\r\n        \"admin\"\r\n        ],\r\n    \"password\": \"1234567890\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\":\"jal@gmal.com\",\r\n\"password\":\"1234567890\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllpost",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWxAZ21hbC5jb20iLCJpYXQiOjE2OTk4ODcxNTAsImV4cCI6MTY5OTk3MzU1MH0._qFhaBF15E9vPYvpU6RTKWW8Q9dTjB1Vl5ZoJNB0hz8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/service/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"service",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllComments",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWxAZ21hbC5jb20iLCJpYXQiOjE2OTk4ODcxNTAsImV4cCI6MTY5OTk3MzU1MH0._qFhaBF15E9vPYvpU6RTKWW8Q9dTjB1Vl5ZoJNB0hz8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/service/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"service",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWxAZ21hbC5jb20iLCJpYXQiOjE2OTk4ODcxNTAsImV4cCI6MTY5OTk3MzU1MH0._qFhaBF15E9vPYvpU6RTKWW8Q9dTjB1Vl5ZoJNB0hz8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/service/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"service",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUsersByfilter",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWxAZ21hbC5jb20iLCJpYXQiOjE2OTk4OTI3MDQsImV4cCI6MTY5OTk3OTEwNH0.E8tvw7FhvRILUArisBjtsCntGmno6olqhsQB1YLj2qE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userid\":0,\r\n\t\"status\":\"active\",\r\n\t\"gender\":\"male\",\r\n\t\"username\":\"bassam@gmail.com\",\r\n\t\"name\":\"bas\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/service/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"service",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPostbyFilter",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWxAZ21hbC5jb20iLCJpYXQiOjE2OTk4OTI3MDQsImV4cCI6MTY5OTk3OTEwNH0.E8tvw7FhvRILUArisBjtsCntGmno6olqhsQB1YLj2qE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"postid\":,\r\n\t\"user_id\":,\r\n\t\"title\":\"Solutio\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/service/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"service",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
