@@ -41,11 +41,31 @@ public class UserServiceImpl implements UserService {
 					predicate = criteriaBuilder.and(predicate, criteriaBuilder.equal(root.get("id"), filter.userid ));
 				}
 
-//				if (filter.status != null) {
-//					predicate = criteriaBuilder.and(predicate,
-//							criteriaBuilder.equal(root.get("user_id"), filter.user_id));
-//				}
-
+				if (filter.name != null && !"".equals(filter.name.trim())) {
+					predicate = criteriaBuilder.and(predicate,
+							criteriaBuilder.like(criteriaBuilder.lower(root.get("name")),
+									"%" + filter.name.toLowerCase() + "%"));
+					
+				}
+				
+				if (filter.status != null && !"".equals(filter.status.trim())) {
+					predicate = criteriaBuilder.and(predicate,
+							criteriaBuilder.equal(root.get("status"), filter.status));
+					
+				}
+				
+				if (filter.gender != null && !"".equals(filter.gender.trim())) {
+					predicate = criteriaBuilder.and(predicate,
+							criteriaBuilder.equal(root.get("gender"), filter.gender));
+					
+				}
+				
+				if (filter.username != null && !"".equals(filter.username.trim())) {
+					predicate = criteriaBuilder.and(predicate,
+							criteriaBuilder.equal(root.get("username"), filter.username));
+					
+				}
+				
 				
 
 			}

@@ -24,7 +24,7 @@ import com.abdul.sa.security.jwt.AuthTokenFilter;
 @Configuration
 @EnableMethodSecurity
 
-public class WebSecurityConfig { 
+public class WebSecurityConfig {
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
 
@@ -36,10 +36,8 @@ public class WebSecurityConfig {
 		return new AuthTokenFilter();
 	}
 
-
-
 	@Bean
-	 DaoAuthenticationProvider authenticationProvider() {
+	DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
 		authProvider.setUserDetailsService(userDetailsService);
@@ -48,21 +46,18 @@ public class WebSecurityConfig {
 		return authProvider;
 	}
 
-
-
 	@Bean
-	 AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+	AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
 		return authConfig.getAuthenticationManager();
 	}
 
 	@Bean
-	 PasswordEncoder passwordEncoder() {
+	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
-
 	@Bean
-	 SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
 				.exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
