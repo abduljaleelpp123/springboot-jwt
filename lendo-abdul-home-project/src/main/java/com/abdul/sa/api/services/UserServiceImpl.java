@@ -1,0 +1,65 @@
+package com.abdul.sa.api.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
+
+import com.abdul.sa.api.request.UserFilter;
+import com.abdul.sa.entity.User;
+import com.abdul.sa.repository.UserRepository;
+
+import jakarta.persistence.criteria.Predicate;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	UserRepository userRepository;
+
+	@Override
+	public List<User> getUsersBy(UserFilter userFilter) {
+		List<User> userList = null;
+		if(userFilter != null) {
+			 userList = getUserByFilter(userFilter);
+		}else {
+			 userList = userRepository.findAll();
+		}
+		return userList;
+	}
+	
+	
+	private List<User> getUserByFilter(UserFilter filter) {
+
+		Specification<User> spec = (root, query, criteriaBuilder) -> {
+			Predicate predicate = criteriaBuilder.conjunction();
+			if (filter != null) {
+
+				
+				if (filter.userid > 0 ) {
+					predicate = criteriaBuilder.and(predicate, criteriaBuilder.equal(root.get("id"), filter.userid ));
+				}
+
+//				if (filter.status != null) {
+//					predicate = criteriaBuilder.and(predicate,
+//							criteriaBuilder.equal(root.get("user_id"), filter.user_id));
+//				}
+
+				
+
+			}
+			return predicate;
+		};
+
+		List<User> userList = userRepository.findAll(spec);
+
+		return userList;
+
+	}
+	
+	
+	
+	
+	
+}
